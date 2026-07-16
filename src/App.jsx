@@ -11,6 +11,7 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Reveal from "./components/Reveal.jsx";
 import MaskReveal from "./components/MaskReveal.jsx";
+import Magnetic from "./components/Magnetic.jsx";
 import useLenis from "./hooks/useLenis.js";
 
 /* ================================================================== *
@@ -99,12 +100,14 @@ function Hero({ onRobotReady }) {
             {CONFIG.name}. Full stack, from frontends to APIs to databases,
             with a bias for shipping.
           </p>
-          <a className="hero__cta" href="#work">
-            See selected work
-            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M6 1v10M6 11l4-4M6 11L2 7" stroke="currentColor" strokeWidth="1.4" />
-            </svg>
-          </a>
+          <Magnetic>
+            <a className="hero__cta" href="#work">
+              See selected work
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M6 1v10M6 11l4-4M6 11L2 7" stroke="currentColor" strokeWidth="1.4" />
+              </svg>
+            </a>
+          </Magnetic>
         </Reveal>
       </div>
 

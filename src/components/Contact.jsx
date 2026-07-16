@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Reveal from "./Reveal.jsx";
 import MaskReveal from "./MaskReveal.jsx";
+import Magnetic from "./Magnetic.jsx";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const SOCIAL_ICONS = {
@@ -66,14 +67,16 @@ export default function Contact({ config }) {
                 const Icon = SOCIAL_ICONS[s.id];
                 return (
                   <li key={s.id}>
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={s.label}
-                    >
-                      {Icon && <Icon aria-hidden="true" />}
-                    </a>
+                    <Magnetic strength={0.45}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={s.label}
+                      >
+                        {Icon && <Icon aria-hidden="true" />}
+                      </a>
+                    </Magnetic>
                   </li>
                 );
               })}
@@ -135,13 +138,15 @@ export default function Contact({ config }) {
                   </p>
                 )}
 
-                <button
-                  className="form__submit"
-                  type="submit"
-                  disabled={status === "sending"}
-                >
-                  {status === "sending" ? "Sending…" : "Send message"}
-                </button>
+                <Magnetic strength={0.2}>
+                  <button
+                    className="form__submit"
+                    type="submit"
+                    disabled={status === "sending"}
+                  >
+                    {status === "sending" ? "Sending…" : "Send message"}
+                  </button>
+                </Magnetic>
               </form>
             )}
           </Reveal>
