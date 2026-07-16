@@ -1,5 +1,6 @@
 import React from "react";
 import Reveal from "./Reveal.jsx";
+import MaskReveal from "./MaskReveal.jsx";
 
 export default function About({ config }) {
   return (
@@ -8,12 +9,16 @@ export default function About({ config }) {
         <span className="sec-num" aria-hidden="true">
           01
         </span>
-        <Reveal className="sec-head">
-          <span className="label">About</span>
-          <h2>
-            A builder, <em>end to end</em>
-          </h2>
-        </Reveal>
+        <div className="sec-head">
+          <Reveal as="span" className="label">
+            About
+          </Reveal>
+          <MaskReveal delay={0.06}>
+            <h2>
+              A builder, <em>end to end</em>
+            </h2>
+          </MaskReveal>
+        </div>
 
         <div className="about__grid">
           <span className="label label--accent" aria-hidden="true">

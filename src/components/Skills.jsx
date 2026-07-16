@@ -1,5 +1,6 @@
 import React from "react";
 import Reveal from "./Reveal.jsx";
+import MaskReveal from "./MaskReveal.jsx";
 import {
   SiJavascript,
   SiTypescript,
@@ -49,12 +50,16 @@ export default function Skills({ config }) {
         <span className="sec-num" aria-hidden="true">
           02
         </span>
-        <Reveal className="sec-head">
-          <span className="label">Skills</span>
-          <h2>
-            The <em>toolkit</em>
-          </h2>
-        </Reveal>
+        <div className="sec-head">
+          <Reveal as="span" className="label">
+            Skills
+          </Reveal>
+          <MaskReveal delay={0.06}>
+            <h2>
+              The <em>toolkit</em>
+            </h2>
+          </MaskReveal>
+        </div>
 
         <div>
           {config.skills.map((group, gi) => (

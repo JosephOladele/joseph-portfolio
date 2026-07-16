@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Reveal from "./Reveal.jsx";
+import MaskReveal from "./MaskReveal.jsx";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const SOCIAL_ICONS = {
@@ -40,12 +41,16 @@ export default function Contact({ config }) {
         <span className="sec-num" aria-hidden="true">
           04
         </span>
-        <Reveal className="sec-head">
-          <span className="label">Contact</span>
-          <h2>
-            Let&rsquo;s build <em>something</em>
-          </h2>
-        </Reveal>
+        <div className="sec-head">
+          <Reveal as="span" className="label">
+            Contact
+          </Reveal>
+          <MaskReveal delay={0.06}>
+            <h2>
+              Let&rsquo;s build <em>something</em>
+            </h2>
+          </MaskReveal>
+        </div>
 
         <div className="contact__grid">
           <Reveal>

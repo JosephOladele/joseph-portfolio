@@ -1,5 +1,6 @@
 import React from "react";
 import Reveal from "./Reveal.jsx";
+import MaskReveal from "./MaskReveal.jsx";
 
 export default function Work({ config }) {
   return (
@@ -8,12 +9,16 @@ export default function Work({ config }) {
         <span className="sec-num" aria-hidden="true">
           03
         </span>
-        <Reveal className="sec-head">
-          <span className="label">Work</span>
-          <h2>
-            Selected <em>work</em>
-          </h2>
-        </Reveal>
+        <div className="sec-head">
+          <Reveal as="span" className="label">
+            Work
+          </Reveal>
+          <MaskReveal delay={0.06}>
+            <h2>
+              Selected <em>work</em>
+            </h2>
+          </MaskReveal>
+        </div>
 
         <div className="work__list">
           {config.projects.map((p, i) => (

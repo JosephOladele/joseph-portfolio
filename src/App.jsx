@@ -10,6 +10,7 @@ import Work from "./components/Work.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Reveal from "./components/Reveal.jsx";
+import MaskReveal from "./components/MaskReveal.jsx";
 import useLenis from "./hooks/useLenis.js";
 
 /* ================================================================== *
@@ -86,12 +87,12 @@ function Hero({ onRobotReady }) {
         <Reveal>
           <p className="hero__role label label--accent">{CONFIG.role}</p>
         </Reveal>
-        <Reveal delay={0.08}>
+        <MaskReveal delay={0.08}>
           <h1>
             I build systems that scale, from the <em>pixel</em> to the{" "}
             <em>partition</em>.
           </h1>
-        </Reveal>
+        </MaskReveal>
 
         <Reveal delay={0.2} className="hero__foot">
           <p className="hero__intro">
