@@ -67,20 +67,10 @@ export const CONFIG = {
       link: "https://petal-chat-app.vercel.app",
       image: "/previews/petal-chat.png",
     },
-    {
-      name: "Project Three",
-      category: "API / Backend",
-      description:
-        "A short description of what this project does, who it's for, and the problem it solves. Replace with the real thing.",
-      tags: [".NET", "MySQL"],
-      link: "#",
-    },
   ],
 
   socials: [
-    { id: "github", label: "GitHub", href: "https://github.com/" },
-    { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com/" },
-    { id: "x", label: "X", href: "https://x.com/" },
+    { id: "github", label: "GitHub", href: "https://github.com/JosephOladele" },
   ],
 };
 /* ================================================================== */
