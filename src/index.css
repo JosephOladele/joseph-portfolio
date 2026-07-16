@@ -1006,6 +1006,12 @@ html.is-loading {
   animation: marquee 42s linear infinite;
 }
 
+/* When the track is driven by scroll velocity (JS), the CSS loop
+   stands down — one owner for the transform. */
+.marquee__track--live {
+  animation: none;
+}
+
 .marquee__row {
   display: flex;
   flex-shrink: 0;
