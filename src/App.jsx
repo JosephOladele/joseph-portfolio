@@ -10,6 +10,7 @@ import Work from "./components/Work.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Reveal from "./components/Reveal.jsx";
+import useLenis from "./hooks/useLenis.js";
 
 /* ================================================================== *
  *  CONFIG — everything editable lives here.                          *
@@ -116,6 +117,7 @@ function Hero({ onRobotReady }) {
 export default function App() {
   const [robotReady, setRobotReady] = useState(false);
   const onRobotReady = useCallback(() => setRobotReady(true), []);
+  useLenis();
 
   return (
     <>
