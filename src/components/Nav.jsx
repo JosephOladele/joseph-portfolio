@@ -9,10 +9,25 @@ const LINKS = [
 
 export default function Nav({ initials }) {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
+  /* The bar steps aside while you read downward and returns the moment
+     you scroll back up. It never hides near the top of the page. */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      if (y < 160) {
+        setHidden(false);
+      } else if (y > lastY + 6) {
+        setHidden(true);
+      } else if (y < lastY - 6) {
+        setHidden(false);
+      }
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -28,7 +43,11 @@ export default function Nav({ initials }) {
 
   return (
     <>
-      <header className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+      <header
+        className={`nav ${scrolled ? "is-scrolled" : ""} ${
+          hidden && !open ? "is-hidden" : ""
+        }`}
+      >
         <div className="shell nav__inner">
           <a href="#top" className="nav__mark" aria-label="Back to top">
             {initials}

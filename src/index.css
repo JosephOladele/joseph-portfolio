@@ -165,7 +165,8 @@ section {
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  transition: background 0.35s ease, border-color 0.35s ease;
+  transition: background 0.35s ease, border-color 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   border-bottom: 1px solid transparent;
 }
 
@@ -174,6 +175,17 @@ section {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--hairline);
+}
+
+/* Reading down: the bar steps out of the way. Scrolling up brings it back. */
+.nav.is-hidden {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav.is-hidden {
+    transform: none;
+  }
 }
 
 .nav__inner {
