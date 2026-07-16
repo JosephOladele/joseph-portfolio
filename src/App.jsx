@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Nav from "./components/Nav.jsx";
 import RobotHero from "./components/RobotHero.jsx";
 import Preloader from "./components/Preloader.jsx";
@@ -79,12 +80,27 @@ export const CONFIG = {
 /* ================================================================== */
 
 function Hero({ onRobotReady }) {
+  const ref = useRef(null);
+  const reduced = useReducedMotion();
+
+  /* As the hero scrolls away, its type sinks and dissolves — a slower
+     layer than the page, so the handoff to the marquee reads as depth. */
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+
   return (
-    <section id="top" className="hero">
+    <section id="top" className="hero" ref={ref}>
       <RobotHero onReady={onRobotReady} />
       <div className="hero__veil" />
 
-      <div className="hero__content shell">
+      <motion.div
+        className="hero__content shell"
+        style={reduced ? undefined : { y, opacity }}
+      >
         <Reveal>
           <p className="hero__role label label--accent">{CONFIG.role}</p>
         </Reveal>
@@ -109,7 +125,7 @@ function Hero({ onRobotReady }) {
             </a>
           </Magnetic>
         </Reveal>
-      </div>
+      </motion.div>
 
       <p className="hero__scrollhint" aria-hidden="true">
         Scroll
