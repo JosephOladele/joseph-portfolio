@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useMemo } from "react";
+import Quiet from "./Quiet.jsx";
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
@@ -27,11 +28,18 @@ export default function RobotHero({ onReady }) {
     return <div className="hero__robot hero__robot--static" aria-hidden="true" />;
   }
 
+  /* If the scene can't start (no WebGL, blocked drivers), fall back to
+     the static backdrop and release the preloader — never a blank page. */
   return (
-    <div className="hero__robot" aria-hidden="true">
-      <Suspense fallback={null}>
-        <Spline scene={SCENE} onLoad={onReady} />
-      </Suspense>
-    </div>
+    <Quiet
+      onFail={onReady}
+      fallback={<div className="hero__robot hero__robot--static" aria-hidden="true" />}
+    >
+      <div className="hero__robot" aria-hidden="true">
+        <Suspense fallback={null}>
+          <Spline scene={SCENE} onLoad={onReady} />
+        </Suspense>
+      </div>
+    </Quiet>
   );
 }
