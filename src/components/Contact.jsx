@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Reveal from "./Reveal.jsx";
 import MaskReveal from "./MaskReveal.jsx";
 import Magnetic from "./Magnetic.jsx";
-import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
 const SOCIAL_ICONS = {
   github: FaGithub,
   linkedin: FaLinkedinIn,
-  x: FaXTwitter,
 };
 
 export default function Contact({ config }) {
@@ -46,9 +45,9 @@ export default function Contact({ config }) {
           <Reveal as="span" className="label">
             Contact
           </Reveal>
-          <MaskReveal delay={0.06}>
+          <MaskReveal className="sec-head__title" delay={0.06}>
             <h2>
-              Let&rsquo;s build <em>something</em>
+              Let&rsquo;s build <em>something real</em>
             </h2>
           </MaskReveal>
         </div>
@@ -56,8 +55,8 @@ export default function Contact({ config }) {
         <div className="contact__grid">
           <Reveal>
             <p className="contact__lede">
-              Have a project, a role, or just an idea worth talking about?{" "}
-              <em>Write to me.</em>
+              Have a product to build, a role to fill, or an idea worth
+              testing? <em>Write to me.</em>
             </p>
             <a className="contact__email" href={`mailto:${config.email}`}>
               {config.email}
@@ -86,10 +85,10 @@ export default function Contact({ config }) {
           <Reveal delay={0.12}>
             {status === "success" ? (
               <div className="form__success" role="status">
-                <h3>Thank you. Message sent.</h3>
+                <h3>Message sent.</h3>
                 <p>
-                  Your note is on its way to my inbox. I read everything and
-                  I&rsquo;ll get back to you soon.
+                  Your note is on its way to my inbox. I read every one of them
+                  and I will come back to you shortly.
                 </p>
                 <button className="form__again" onClick={() => setStatus("idle")}>
                   Send another message
@@ -133,12 +132,12 @@ export default function Contact({ config }) {
 
                 {status === "error" && (
                   <p className="form__error" role="alert">
-                    Something went wrong sending your message. Try again, or
-                    email me directly at {config.email}.
+                    That message did not go through. Try once more, or email me
+                    directly at {config.email}.
                   </p>
                 )}
 
-                <Magnetic strength={0.2}>
+                <Magnetic strength={0.18}>
                   <button
                     className="form__submit"
                     type="submit"

@@ -9,7 +9,7 @@ import React, { useEffect, useMemo, useState } from "react";
 const MIN_MS = 1000;
 const CAP_MS = 4500;
 
-export default function Preloader({ ready }) {
+export default function Preloader({ ready, onLeave }) {
   const reduced = useMemo(
     () =>
       typeof window !== "undefined" &&
@@ -32,6 +32,11 @@ export default function Preloader({ ready }) {
   }, [reduced]);
 
   const leaving = minDone && (ready || capDone);
+
+  /* The page behind the veil holds its intro until this fires. */
+  useEffect(() => {
+    if (reduced || leaving) onLeave?.();
+  }, [reduced, leaving, onLeave]);
 
   /* Lock scroll while the veil is up. */
   useEffect(() => {

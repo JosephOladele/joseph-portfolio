@@ -1,6 +1,7 @@
 import React from "react";
 import Reveal from "./Reveal.jsx";
 import MaskReveal from "./MaskReveal.jsx";
+import Counter from "./Counter.jsx";
 
 export default function About({ config }) {
   return (
@@ -13,7 +14,7 @@ export default function About({ config }) {
           <Reveal as="span" className="label">
             About
           </Reveal>
-          <MaskReveal delay={0.06}>
+          <MaskReveal className="sec-head__title" delay={0.06}>
             <h2>
               A builder, <em>end to end</em>
             </h2>
@@ -21,7 +22,7 @@ export default function About({ config }) {
         </div>
 
         <div className="about__grid">
-          <span className="label label--accent" aria-hidden="true">
+          <span className="label label--accent about__tag" aria-hidden="true">
             Profile
           </span>
 
@@ -33,11 +34,9 @@ export default function About({ config }) {
             <dl className="about__stats">
               {config.stats.map((s) => (
                 <div className="stat" key={s.label}>
-                  <dt className="stat__label" style={{ order: 2 }}>
-                    {s.label}
-                  </dt>
-                  <dd className="stat__value" style={{ order: 1 }}>
-                    {s.value}
+                  <dt className="stat__label">{s.label}</dt>
+                  <dd className="stat__value">
+                    <Counter value={s.value} />
                     {s.suffix && <sup>{s.suffix}</sup>}
                   </dd>
                 </div>

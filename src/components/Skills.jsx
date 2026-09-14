@@ -43,6 +43,9 @@ const ICONS = {
   Vercel: SiVercel,
 };
 
+/* An index, not a badge wall: each group is one ruled row and the tools
+   are set as type, so the section reads at the same weight as the rest
+   of the page. */
 export default function Skills({ config }) {
   return (
     <section id="skills" className="section-pad">
@@ -54,26 +57,29 @@ export default function Skills({ config }) {
           <Reveal as="span" className="label">
             Skills
           </Reveal>
-          <MaskReveal delay={0.06}>
+          <MaskReveal className="sec-head__title" delay={0.06}>
             <h2>
               The <em>toolkit</em>
             </h2>
           </MaskReveal>
         </div>
 
-        <div>
+        <div className="skills">
           {config.skills.map((group, gi) => (
-            <Reveal key={group.group} delay={gi * 0.08} className="skills__group">
-              <h3>{group.group}</h3>
+            <Reveal key={group.group} delay={gi * 0.07} className="skills__group">
+              <h3>
+                <span className="skills__num" aria-hidden="true">
+                  {String(gi + 1).padStart(2, "0")}
+                </span>
+                {group.group}
+              </h3>
               <ul className="skills__list">
                 {group.items.map((name) => {
                   const Icon = ICONS[name];
                   return (
                     <li key={name}>
-                      <span className="skill-chip">
-                        {Icon && <Icon aria-hidden="true" />}
-                        {name}
-                      </span>
+                      {Icon && <Icon aria-hidden="true" />}
+                      {name}
                     </li>
                   );
                 })}
