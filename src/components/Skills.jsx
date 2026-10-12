@@ -17,6 +17,16 @@ import {
   SiGithub,
   SiPostman,
   SiVercel,
+  SiRust,
+  SiPython,
+  SiGo,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiPrisma,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiGithubactions,
 } from "react-icons/si";
 import { FaJava, FaCss3Alt } from "react-icons/fa";
 import { TbBrandCSharp, TbBrandReactNative } from "react-icons/tb";
@@ -41,6 +51,16 @@ const ICONS = {
   GitHub: SiGithub,
   Postman: SiPostman,
   Vercel: SiVercel,
+  Rust: SiRust,
+  Python: SiPython,
+  Go: SiGo,
+  "Next.js": SiNextdotjs,
+  Tailwind: SiTailwindcss,
+  Prisma: SiPrisma,
+  MongoDB: SiMongodb,
+  Docker: SiDocker,
+  Git: SiGit,
+  "GitHub Actions": SiGithubactions,
 };
 
 /* An index, not a badge wall: each group is one ruled row and the tools

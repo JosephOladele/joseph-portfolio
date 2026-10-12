@@ -10,6 +10,7 @@ import Magnetic from "./components/Magnetic.jsx";
 import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Work from "./components/Work.jsx";
+import OpenSource from "./components/OpenSource.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Reveal from "./components/Reveal.jsx";
@@ -31,25 +32,27 @@ export const CONFIG = {
   stats: [
     { value: "3", suffix: "+", label: "Years building" },
     { value: "3", label: "Products live" },
+    { value: "35", suffix: "+", label: "Merged pull requests" },
+    { value: "24", label: "Open source repos" },
     { value: "Open", label: "For work" },
   ],
 
   skills: [
     {
       group: "Languages",
-      items: ["JavaScript", "TypeScript", "Java", "PHP", "C#", "C", "C++"],
+      items: ["JavaScript", "TypeScript", "Rust", "Python", "Java", "Go", "PHP", "C#", "C", "C++"],
     },
     {
       group: "Frontend",
-      items: ["React", "React Native", "HTML", "CSS"],
+      items: ["React", "Next.js", "React Native", "Tailwind", "HTML", "CSS"],
     },
     {
       group: "Backend",
-      items: ["Node.js", "Nest.js", ".NET"],
+      items: ["Node.js", "Nest.js", ".NET", "Prisma"],
     },
     {
       group: "Data and Tools",
-      items: ["PostgreSQL", "MySQL", "GitHub", "Postman", "Vercel"],
+      items: ["PostgreSQL", "MySQL", "MongoDB", "Docker", "Git", "GitHub", "GitHub Actions", "Postman", "Vercel"],
     },
   ],
 
@@ -85,6 +88,26 @@ export const CONFIG = {
       image: "/previews/petal-chat.png",
     },
   ],
+
+  /* Open source. Names are written without hyphens to keep the house
+     rule; the links carry the real repository paths. */
+  github: "JosephOladele",
+  openSource: {
+    achievements: [
+      { name: "Pull Shark", tier: "x2", image: "/achievements/pull-shark.png", note: "Merged pull requests" },
+      { name: "Pair Extraordinaire", tier: "x2", image: "/achievements/pair-extraordinaire.png", note: "Coauthored merged pull requests" },
+      { name: "Quickdraw", tier: "x2", image: "/achievements/quickdraw.png", note: "Closed an issue within five minutes" },
+    ],
+    contributions: [
+      { name: "Soroban Lens", role: "Maintainer", href: "https://github.com/soroban-forge-labs/soroban-lens" },
+      { name: "C Address Onboarding Bridge", role: "Frontend", href: "https://github.com/C-Address-Onboarding-Bridge/C-Address-Onboarding-Bridge--Frontend-" },
+      { name: "CraftNexus", role: "Contributor", href: "https://github.com/Hub-of-Evolution/CraftNexus" },
+      { name: "SkillSphere", role: "Contributor", href: "https://github.com/LightForgeHub/SkillSphere-Dapp" },
+      { name: "Callora", role: "Frontend", href: "https://github.com/CalloraOrg/Callora-Frontend" },
+      { name: "Disciplr", role: "Backend", href: "https://github.com/Disciplr-Org/Disciplr-backend" },
+      { name: "StellarFraction", role: "Frontend", href: "https://github.com/StellarFraction/StellarFraction-frontend" },
+    ],
+  },
 
   /* TODO: swap the LinkedIn href for the real profile URL. */
   socials: [
@@ -165,6 +188,7 @@ export default function App() {
         <About config={CONFIG} />
         <Skills config={CONFIG} />
         <Work config={CONFIG} />
+        <OpenSource config={CONFIG} />
         <Contact config={CONFIG} />
       </main>
 

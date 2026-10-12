@@ -39,7 +39,7 @@ export default function Contact({ config }) {
     <section id="contact" className="section-pad">
       <div className="shell">
         <span className="sec-num" aria-hidden="true">
-          04
+          05
         </span>
         <div className="sec-head">
           <Reveal as="span" className="label">
