@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import Nav from "./components/Nav.jsx";
-import Hero from "./components/Hero.jsx";
+import Hero, { Stats } from "./components/Hero.jsx";
 import Preloader from "./components/Preloader.jsx";
 import CursorGlow from "./components/CursorGlow.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
@@ -269,6 +269,10 @@ export default function App() {
 
       <main>
         <Hero config={CONFIG} onRobotReady={onRobotReady} robotReady={robotReady} start={introReady} />
+        {/* Phones only: the stats sit between the hero and the doors */}
+        <div className="shell stats-strip">
+          <Stats stats={CONFIG.stats} className="hero__stats hero__stats--strip" />
+        </div>
         <Doors config={CONFIG} />
         <Timeline config={CONFIG} />
         <Work config={CONFIG} />

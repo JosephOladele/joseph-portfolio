@@ -23,7 +23,6 @@ export default function Hero({ config, onRobotReady, robotReady, start }) {
       </div>
       {/* Outside the stage: the stage's fade mask would isolate the blend. */}
       <div className={`hero__tint ${robotReady ? "is-ready" : ""}`} aria-hidden="true" />
-      <div className="hero__veil" aria-hidden="true" />
 
       <motion.div className="hero__content shell" style={reduced ? undefined : { y, opacity }}>
         <Reveal start={start}>
@@ -65,17 +64,26 @@ export default function Hero({ config, onRobotReady, robotReady, start }) {
         </Reveal>
       </motion.div>
 
-      <Reveal start={start} delay={0.7} className="hero__stats shell">
-        {config.stats.map((s) => (
-          <div key={s.label} className="hero__stat">
-            <strong>
-              <Counter value={s.value} />
-              {s.suffix}
-            </strong>
-            <span className="hero__statlabel">{s.label}</span>
-          </div>
-        ))}
-      </Reveal>
+      <Stats stats={config.stats} start={start} delay={0.7} className="hero__stats hero__stats--hero shell" />
     </section>
+  );
+}
+
+/* The numbers row. On wide screens it closes the hero; on phones it
+   moves to the top of the next section so the hero is just the copy,
+   the robot and the buttons. */
+export function Stats({ stats, className, ...reveal }) {
+  return (
+    <Reveal {...reveal} className={className}>
+      {stats.map((s) => (
+        <div key={s.label} className="hero__stat">
+          <strong>
+            <Counter value={s.value} />
+            {s.suffix}
+          </strong>
+          <span className="hero__statlabel">{s.label}</span>
+        </div>
+      ))}
+    </Reveal>
   );
 }
