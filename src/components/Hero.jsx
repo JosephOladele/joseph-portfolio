@@ -23,6 +23,7 @@ export default function Hero({ config, onRobotReady, robotReady, start }) {
       </div>
       {/* Outside the stage: the stage's fade mask would isolate the blend. */}
       <div className={`hero__tint ${robotReady ? "is-ready" : ""}`} aria-hidden="true" />
+      <div className="hero__veil" aria-hidden="true" />
 
       <motion.div className="hero__content shell" style={reduced ? undefined : { y, opacity }}>
         <Reveal start={start}>

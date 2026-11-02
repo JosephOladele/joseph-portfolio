@@ -1436,6 +1436,11 @@ html.is-room {
   pointer-events: none;
 }
 
+/* Only used on phones, where the robot sits behind the copy */
+.hero__veil {
+  display: none;
+}
+
 .hero__content a,
 .hero__content button {
   pointer-events: auto;
@@ -2238,39 +2243,56 @@ html.is-room .scroll-progress {
     padding-top: calc(var(--nav-h) + 40px);
   }
 
-  /* Phones: copy, then the robot in its own space, then the stats.
-     Nothing overlaps. */
+  /* Phones: the robot fills the whole hero as a backdrop behind the
+     copy and stats, with a veil keeping the type readable. */
   .hero__content {
     order: 1;
   }
 
   .hero__stage {
-    order: 2;
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: clamp(260px, 42svh, 380px);
-    margin-top: 8px;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    transform: scale(0.8) translateY(22%);
+    /* Fade the scene's floor and edges into the page. The mask also
+       keeps the tint below on the robot rather than the whole hero. */
+    -webkit-mask-image: radial-gradient(62% 46% at 58% 46%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(62% 46% at 58% 46%, #000 40%, transparent 100%);
+  }
+
+  .hero__veil {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgba(var(--ink-rgb), 0.78) 0%, rgba(var(--ink-rgb), 0.35) 38%, rgba(var(--ink-rgb), 0.1) 62%, rgba(var(--ink-rgb), 0.6) 86%, var(--ink) 100%);
+  }
+
+  /* The robot can sit behind this button, so give it a backing */
+  .hero .btn--ghost {
+    background: rgba(var(--ink-rgb), 0.72);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 
   .hero__stats {
-    order: 3;
+    order: 2;
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px 16px;
-    margin-top: 8px;
+    margin-top: auto;
+    padding-top: 32px;
     padding-bottom: 40px;
   }
 
   /* The full-hero tint can't follow the robot here, so the stage
-     carries its own (no mask on phones, so the blend reaches the page). */
+     carries its own. */
   .hero__tint {
     display: none;
-  }
-
-  .hero__stage {
-    -webkit-mask-image: none;
-    mask-image: none;
   }
 
   .hero__stage::after {
