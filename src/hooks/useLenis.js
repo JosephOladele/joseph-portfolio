@@ -13,11 +13,16 @@ export default function useLenis() {
     const coarse = window.matchMedia("(pointer: coarse)").matches;
     if (reduced || coarse) return;
 
+    /* lerp instead of a fixed duration: each frame closes a small share
+       of the gap to the target, so fast wheel spins blend into one long
+       glide instead of restarting an animation on every tick. */
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+      lerp: 0.075,
+      wheelMultiplier: 0.9,
       smoothWheel: true,
     });
+    /* Shared so overlays (the door rooms) can pause page scrolling. */
+    window.__lenis = lenis;
 
     let raf;
     const loop = (time) => {
@@ -35,7 +40,11 @@ export default function useLenis() {
       const el = document.querySelector(target);
       if (!el) return;
       e.preventDefault();
-      lenis.scrollTo(el, { offset: target === "#top" ? 0 : -24 });
+      lenis.scrollTo(el, {
+        offset: target === "#top" ? 0 : -24,
+        duration: 1.6,
+        easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+      });
       history.pushState(null, "", target);
     };
     document.addEventListener("click", onClick);
@@ -44,6 +53,7 @@ export default function useLenis() {
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(raf);
       lenis.destroy();
+      if (window.__lenis === lenis) delete window.__lenis;
     };
   }, []);
 }

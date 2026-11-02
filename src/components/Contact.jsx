@@ -47,13 +47,36 @@ export default function Contact({ config }) {
           </Reveal>
           <MaskReveal className="sec-head__title" delay={0.06}>
             <h2>
-              Let&rsquo;s build <em>something real</em>
+              Got a project? <em>Let&rsquo;s build it together.</em>
             </h2>
           </MaskReveal>
         </div>
 
         <div className="contact__grid">
           <Reveal>
+            {/* The last door on the site is the one I'm standing at. */}
+            <figure className="contact__me">
+              <div className="contact__photo">
+                <span className="contact__frame">
+                <img
+                  src={config.photo}
+                  alt={`${config.name}, in an all white outfit, sitting on a park bench`}
+                  width="1000"
+                  height="1333"
+                  loading="lazy"
+                />
+                </span>
+              </div>
+              <figcaption>
+                <strong>{config.name}</strong>
+                <span>{config.role}</span>
+                <span className="contact__status">
+                  <i aria-hidden="true" />
+                  Available for work
+                </span>
+              </figcaption>
+            </figure>
+
             <p className="contact__lede">
               Have a product to build, a role to fill, or an idea worth
               testing? <em>Write to me.</em>
@@ -96,6 +119,16 @@ export default function Contact({ config }) {
               </div>
             ) : (
               <form className="form" onSubmit={handleSubmit} noValidate={false}>
+                {/* Spam trap: hidden from people, filled in by bots. Formspree
+                    drops any submission where it has a value. */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  className="form__trap"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <div className="field">
                   <label htmlFor="cf-name">Name</label>
                   <input
@@ -103,6 +136,7 @@ export default function Contact({ config }) {
                     name="name"
                     type="text"
                     autoComplete="name"
+                    maxLength={100}
                     placeholder="Your name"
                     required
                   />
@@ -115,6 +149,7 @@ export default function Contact({ config }) {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    maxLength={254}
                     placeholder="you@example.com"
                     required
                   />
@@ -125,6 +160,7 @@ export default function Contact({ config }) {
                   <textarea
                     id="cf-message"
                     name="message"
+                    maxLength={5000}
                     placeholder="What are we building?"
                     required
                   />
