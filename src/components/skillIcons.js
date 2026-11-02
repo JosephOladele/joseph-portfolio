@@ -1,0 +1,47 @@
+import {
+  SiJavascript,
+  SiTypescript,
+  SiPhp,
+  SiC,
+  SiCplusplus,
+  SiReact,
+  SiHtml5,
+  SiNodedotjs,
+  SiNestjs,
+  SiDotnet,
+  SiPostgresql,
+  SiMysql,
+  SiGithub,
+  SiPostman,
+  SiVercel,
+  SiPrisma,
+  SiSanity,
+} from "react-icons/si";
+import { FaJava, FaCss3Alt } from "react-icons/fa";
+import { TbBrandCSharp, TbBrandReactNative } from "react-icons/tb";
+
+/* Tool name to brand icon, shared by the door rooms. */
+export const SKILL_ICONS = {
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  Java: FaJava,
+  PHP: SiPhp,
+  "C#": TbBrandCSharp,
+  C: SiC,
+  "C++": SiCplusplus,
+  React: SiReact,
+  "React Native": TbBrandReactNative,
+  HTML: SiHtml5,
+  CSS: FaCss3Alt,
+  "Node.js": SiNodedotjs,
+  "Nest.js": SiNestjs,
+  ".NET": SiDotnet,
+  PostgreSQL: SiPostgresql,
+  MySQL: SiMysql,
+  GitHub: SiGithub,
+  Postman: SiPostman,
+  Vercel: SiVercel,
+  Prisma: SiPrisma,
+  Sanity: SiSanity,
+};
+
