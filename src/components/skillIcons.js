@@ -16,6 +16,15 @@ import {
   SiVercel,
   SiPrisma,
   SiSanity,
+  SiRust,
+  SiPython,
+  SiGo,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiGithubactions,
 } from "react-icons/si";
 import { FaJava, FaCss3Alt } from "react-icons/fa";
 import { TbBrandCSharp, TbBrandReactNative } from "react-icons/tb";
@@ -43,5 +52,14 @@ export const SKILL_ICONS = {
   Vercel: SiVercel,
   Prisma: SiPrisma,
   Sanity: SiSanity,
+  Rust: SiRust,
+  Python: SiPython,
+  Go: SiGo,
+  "Next.js": SiNextdotjs,
+  Tailwind: SiTailwindcss,
+  MongoDB: SiMongodb,
+  Docker: SiDocker,
+  Git: SiGit,
+  "GitHub Actions": SiGithubactions,
 };
 

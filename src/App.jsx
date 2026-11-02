@@ -8,6 +8,7 @@ import PullCord from "./components/PullCord.jsx";
 import Doors from "./components/Doors.jsx";
 import Timeline from "./components/Timeline.jsx";
 import Work from "./components/Work.jsx";
+import OpenSource from "./components/OpenSource.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import useLenis from "./hooks/useLenis.js";
@@ -37,6 +38,8 @@ export const CONFIG = {
   stats: [
     { value: "3", suffix: "+", label: "Years building" },
     { value: "4", label: "Products live" },
+    { value: "35", suffix: "+", label: "Merged pull requests" },
+    { value: "24", label: "Open source repos" },
     { value: "Open", label: "For work" },
   ],
 
@@ -56,7 +59,7 @@ export const CONFIG = {
         "Performance and accessibility from the first commit",
         "Deployed and monitored on Vercel",
       ],
-      tools: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Vercel"],
+      tools: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind", "HTML", "CSS", "Vercel"],
       projects: ["Pleats & Plissé", "TIMMCROODS", "BALIN, Maison de Couture"],
     },
     {
@@ -72,7 +75,7 @@ export const CONFIG = {
         "Clean data models and sensible validation",
         "Built to hold up in production",
       ],
-      tools: ["Node.js", "Nest.js", ".NET", "Java", "PHP", "C#"],
+      tools: ["Node.js", "Nest.js", ".NET", "Java", "Python", "Go", "Rust", "PHP", "C#"],
       projects: ["TIMMCROODS", "Pleats & Plissé"],
     },
     {
@@ -105,7 +108,7 @@ export const CONFIG = {
         "API testing and documentation with Postman",
         "Systems fundamentals in C and C++",
       ],
-      tools: ["PostgreSQL", "MySQL", "Prisma", "Sanity", "GitHub", "Postman", "C", "C++"],
+      tools: ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "Sanity", "Docker", "Git", "GitHub", "GitHub Actions", "Postman", "C", "C++"],
       projects: ["TIMMCROODS", "Pleats & Plissé"],
     },
   ],
@@ -159,19 +162,19 @@ export const CONFIG = {
   skills: [
     {
       group: "Languages",
-      items: ["JavaScript", "TypeScript", "Java", "PHP", "C#", "C", "C++"],
+      items: ["JavaScript", "TypeScript", "Rust", "Python", "Java", "Go", "PHP", "C#", "C", "C++"],
     },
     {
       group: "Frontend",
-      items: ["React", "React Native", "HTML", "CSS"],
+      items: ["React", "Next.js", "React Native", "Tailwind", "HTML", "CSS"],
     },
     {
       group: "Backend",
-      items: ["Node.js", "Nest.js", ".NET"],
+      items: ["Node.js", "Nest.js", ".NET", "Prisma"],
     },
     {
       group: "Data and Tools",
-      items: ["PostgreSQL", "MySQL", "GitHub", "Postman", "Vercel"],
+      items: ["PostgreSQL", "MySQL", "MongoDB", "Docker", "Git", "GitHub", "GitHub Actions", "Postman", "Vercel"],
     },
   ],
 
@@ -218,6 +221,26 @@ export const CONFIG = {
     },
   ],
 
+  /* Open source. Names are written without hyphens to keep the house
+     rule; the links carry the real repository paths. */
+  github: "JosephOladele",
+  openSource: {
+    achievements: [
+      { name: "Pull Shark", tier: "x2", image: "/achievements/pull-shark.png", note: "Merged pull requests" },
+      { name: "Pair Extraordinaire", tier: "x2", image: "/achievements/pair-extraordinaire.png", note: "Coauthored merged pull requests" },
+      { name: "Quickdraw", tier: "x2", image: "/achievements/quickdraw.png", note: "Closed an issue within five minutes" },
+    ],
+    contributions: [
+      { name: "Soroban Lens", role: "Maintainer", href: "https://github.com/soroban-forge-labs/soroban-lens" },
+      { name: "C Address Onboarding Bridge", role: "Frontend", href: "https://github.com/C-Address-Onboarding-Bridge/C-Address-Onboarding-Bridge--Frontend-" },
+      { name: "CraftNexus", role: "Contributor", href: "https://github.com/Hub-of-Evolution/CraftNexus" },
+      { name: "SkillSphere", role: "Contributor", href: "https://github.com/LightForgeHub/SkillSphere-Dapp" },
+      { name: "Callora", role: "Frontend", href: "https://github.com/CalloraOrg/Callora-Frontend" },
+      { name: "Disciplr", role: "Backend", href: "https://github.com/Disciplr-Org/Disciplr-backend" },
+      { name: "StellarFraction", role: "Frontend", href: "https://github.com/StellarFraction/StellarFraction-frontend" },
+    ],
+  },
+
   socials: [
     { id: "github", label: "GitHub", href: "https://github.com/JosephOladele" },
     {
@@ -249,6 +272,7 @@ export default function App() {
         <Doors config={CONFIG} />
         <Timeline config={CONFIG} />
         <Work config={CONFIG} />
+        <OpenSource config={CONFIG} />
         <Contact config={CONFIG} />
       </main>
 

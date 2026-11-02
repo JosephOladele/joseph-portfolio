@@ -39,7 +39,7 @@ export default function Contact({ config }) {
     <section id="contact" className="section-pad">
       <div className="shell">
         <span className="sec-num" aria-hidden="true">
-          04
+          05
         </span>
         <div className="sec-head">
           <Reveal as="span" className="label">
@@ -119,6 +119,16 @@ export default function Contact({ config }) {
               </div>
             ) : (
               <form className="form" onSubmit={handleSubmit} noValidate={false}>
+                {/* Spam trap: hidden from people, filled in by bots. Formspree
+                    drops any submission where it has a value. */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  className="form__trap"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <div className="field">
                   <label htmlFor="cf-name">Name</label>
                   <input
@@ -126,6 +136,7 @@ export default function Contact({ config }) {
                     name="name"
                     type="text"
                     autoComplete="name"
+                    maxLength={100}
                     placeholder="Your name"
                     required
                   />
@@ -138,6 +149,7 @@ export default function Contact({ config }) {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    maxLength={254}
                     placeholder="you@example.com"
                     required
                   />
@@ -148,6 +160,7 @@ export default function Contact({ config }) {
                   <textarea
                     id="cf-message"
                     name="message"
+                    maxLength={5000}
                     placeholder="What are we building?"
                     required
                   />
