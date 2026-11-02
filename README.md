@@ -52,3 +52,28 @@ The contact form has a hidden `_gotcha` field that Formspree uses to drop bot su
 - Smooth scrolling (Lenis) is desktop only; touch devices keep native scrolling
 - The door rooms are real dialogs: focus moves in, Escape leaves
 - Checked for horizontal overflow from 320px to 1920px wide
+
+## Project context (handoff notes, 2 Nov 2026)
+
+For picking this up in a new session.
+
+**Where things stand**
+- Live: https://joseph-portfolio-nu.vercel.app (Vercel auto-deploys every push to `main`)
+- Repo: `JosephOladele/joseph-portfolio`. Push and open PRs as the **JosephOladele** account. No Claude attribution in commits or PRs.
+- Redesign shipped in PR #1 (`0af061f`). The design is based on a reel by @rishithakor.creates (`~/Downloads/portfolioidea.MP4`): flip-calendar hero, pull-cord light switch, "behind the doors" services, "back in time" timeline, and the "Let's build it together" contact section.
+- Section order and numbers: Hero, Doors 01, Story 02, Work 03, Open Source 04, Contact 05.
+- Contact form: Formspree `https://formspree.io/f/xjgdjaaj` (confirmed working).
+
+**Still to do**
+- The 2024 ("Sharpening the craft") and 2023 (Babcock, "Where it started") timeline entries in `CONFIG.timeline` are placeholder copy. Replace them with real details.
+- The Pleats & Plissé preview (`public/previews/pleats-and-plisse.png`) still shows the placeholder "H01 · HERO · 16:9" image. Take a new screenshot once the real photos are on that site.
+- The contact photo (`public/joseph.jpg`, from `profilepic3.HEIC`, 720×960) shows the subject quite small. It could use a tighter crop or a bigger arch.
+- `npm audit` reports one remaining issue in the esbuild/Vite dev server. It only affects `npm run dev` and needs a major Vite upgrade.
+
+**Gotchas**
+- The robot tint is a separate `.hero__tint` element. Putting a filter on a WebGL parent blanks the canvas, and the stage's mask stops blending. On phones the tint is `.hero__stage::after` instead.
+- Door camera timings are constants at the top of `Doors.jsx`: SWING, DOLLY, SETTLE, ROOM_OUT and PULL_BACK. The zoom multiplier is ×1.6.
+- `MaskReveal` uses `useInView` on its outer mask. Watching the inner element meant titles never animated in.
+- Lenis is exposed as `window.__lenis`. Doors stop and restart it when a room opens and closes, and native `scroll-behavior` is turned off while Lenis runs.
+- The theme is stored in localStorage under `jo-theme` (`src/lib/theme.js`). The inline script in `index.html` applies it before first paint. If you edit that script, update its CSP hash in `vercel.json`.
+- Horizontal overflow is prevented by `overflow-x: clip` on `body` and `.doors`. Check it from 320 to 1920px after any layout change.
